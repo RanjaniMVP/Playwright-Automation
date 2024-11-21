@@ -48,23 +48,6 @@ test.only('OrangeHRM E2E - Add New Employee', async ({ page }) => {
   await page.fill("//input[@placeholder='Last Name']", 'Magesh');
   const employeeId = await page.inputValue("(//label[text()='Employee Id']//following::div//input)[1]"); // Capture generated Employee ID
   await page.click("//button[text()=' Save ']"); // Save employee details
-  // const errorVisible = await page.isVisible('div.validation-error'); // Check for error message
-  
-  // if (errorVisible) {
-  //   const errorMessage = await page.textContent('div.validation-error');
-  //   console.log(`Error: ${errorMessage}`);
-
-  //   if (errorMessage.includes('Employee Id already exists')) {
-  //     console.log('Generating a new Employee ID...');
-  //     const newEmployeeID = Math.floor(10000 + Math.random() * 90000).toString(); // Generate random Employee ID
-  //     await page.fill('input#employeeId', newEmployeeID);
-  //     await page.click('button#btnSave'); // Retry Save
-  //     console.log('Employee added successfully with new Employee ID.');
-  //   }
-  // } else {
-  //   console.log('Employee added successfully on the first attempt.');
-  // }
-
   await page.textContent("//h6[text()='Personal Details']");
   expect(await page.locator("//h6[text()='Personal Details']")).toHaveText('Personal Details'); // Confirm navigation to personal details
 
